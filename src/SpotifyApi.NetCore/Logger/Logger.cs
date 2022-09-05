@@ -10,6 +10,8 @@ namespace SpotifyApi.NetCore
     /// </summary>
     public static class Logger
     {
+        public static bool LOGGING_ENABLED = true;
+        
         private static ILoggerFactory _Factory = null;
 
         /// <summary>
@@ -122,6 +124,12 @@ namespace SpotifyApi.NetCore
                 Trace.TraceError(fullMessage);
                 CreateLogger(category).LogError(exception, message);
             }
+        }
+
+        public static bool LoggingEnabled
+        {
+            get => LOGGING_ENABLED;
+            set => LOGGING_ENABLED = value;
         }
     }
 }
